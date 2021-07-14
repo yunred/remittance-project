@@ -1,5 +1,5 @@
 import React from 'react';
-import Money from './components/Money';
+import Money from './components/Money.js';
 
 function App(){
   return(
