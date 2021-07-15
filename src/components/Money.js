@@ -1,15 +1,46 @@
 import React, {useState} from 'react';
+import styled from 'styled-components';
+import Button from './ButtonStyle';
+
+const MoneyBlock = styled.div`
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+
+  h1{
+    font-size: 42px;
+  }
+
+  
+`;
+
+const ButtonBlock = styled.div`
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  
+`;
 
 function Money() {
   const [value, setValue] = useState('0');
-  const [isActive, setActive] = useState(false);
+  const [inActive, setInactive] = useState(true);
   const [isLimit, setLimit] = useState(false);
   //취소, <- 버튼, 보내기버튼 활성화
 
   const onInputNum = (e) =>{
     if (value === '0'){
       setValue(e.target.textContent);
-      setActive(true);
+      if(e.target.textContent === '0'){
+        setInactive(true);
+      }else{
+        setInactive(false);
+      }
     }else if((value + e.target.textContent)>2000000){ //200만원 초과할때
       setLimit(true);
       setValue('2000000');
@@ -22,9 +53,12 @@ function Money() {
   const onInputElse = (e) => {
     if(e.target.textContent === '취소'){
       setValue('0');
+      setInactive(true);
+      console.log('취소누름');
     }else if(e.target.textContent === '⬅︎'){
       if(value.length === 1){ //10미만일 때 0으로
         setValue('0');
+        setInactive(true);
       }else {
         setValue((preValue) => preValue.slice(0,-1));
       }   
@@ -33,26 +67,33 @@ function Money() {
 
 
   return(
-    <div className = 'button'>
-      <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</h1>
-      <h4 className = {isLimit?'limit':'unlimit'}>최대 200만원까지 입력할 수 있습니다</h4>
-      <button onClick= {onInputNum}>1</button>
-      <button onClick= {onInputNum}>2</button>
-      <button onClick= {onInputNum}>3</button>
+    <>
+      <MoneyBlock>
+        <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</h1>
+        <h4 className = {isLimit?'limit':'unlimit'}>최대 200만원까지 입력할 수 있습니다</h4>
+      </MoneyBlock>
+      <ButtonBlock>
+        <Button onClick= {onInputNum}>1</Button>
+        <Button onClick= {onInputNum}>2</Button>
+        <Button onClick= {onInputNum}>3</Button>
+        <br/>
 
-      <button onClick= {onInputNum}>4</button>
-      <button onClick= {onInputNum}>5</button>
-      <button onClick= {onInputNum}>6</button>
+        <Button onClick= {onInputNum}>4</Button>
+        <Button onClick= {onInputNum}>5</Button>
+        <Button onClick= {onInputNum}>6</Button>
+        <br/>
 
-      <button onClick= {onInputNum}>7</button>
-      <button onClick= {onInputNum}>8</button>
-      <button onClick= {onInputNum}>9</button>
+        <Button onClick= {onInputNum}>7</Button>
+        <Button onClick= {onInputNum}>8</Button>
+        <Button onClick= {onInputNum}>9</Button>
+        <br/>
 
-      <button className ={isActive?'activebutton':'inactivbutton'} onClick= {onInputElse}>취소</button>
-      <button onClick= {onInputNum}>0</button>
-      <button className ={isActive?'activebutton':'inactivbutton'} onClick= {onInputElse}>⬅︎</button>
-
-    </div>
+        <Button className = {'cancelBack'} disabled = {inActive} onClick= {onInputElse}>취소</Button>
+        <Button onClick= {onInputNum}>0</Button>
+        <Button className = {'cancelBack'} disabled = {inActive} onClick= {onInputElse}>⬅︎</Button>
+        <Button className = {'send'} disabled = {inActive}  onClick= {onInputElse}>보내기</Button>
+      </ButtonBlock>
+    </>
   )
 
 }
