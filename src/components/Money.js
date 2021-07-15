@@ -1,8 +1,27 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from './ButtonStyle';
-import MoneyBlock from './MoneyBlockStyle';
 
+const MoneyBlock = styled.div`
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+
+  h1{
+    font-size: 42px;
+
+  }
+  .less {
+    visibility: hidden;
+  }
+  .excess{
+    visibility: 'visible';
+  }
+`;
 
 const ButtonBlock = styled.div`
   text-align: center;
@@ -17,11 +36,11 @@ const ButtonBlock = styled.div`
 function Money() {
   const [value, setValue] = useState('0');
   const [inActive, setInactive] = useState(true);
-  const [underlimit, setunderLimit] = useState(true);
+  const [underLimit, setunderLimit] = useState(true);
   //취소, <- 버튼, 보내기버튼 활성화
 
   const onInputNum = (e) =>{
-    if (value === '0'){
+    if (value === '0'){ //0원일 때
       setValue(e.target.textContent);
       if(e.target.textContent === '0'){
         setInactive(true);
@@ -31,11 +50,11 @@ function Money() {
     }else if((value + e.target.textContent)>2000000){ //200만원 초과할때
       setValue('2000000');
       setunderLimit(false);
+      console.log(underLimit);
     }else{
       setValue((preValue) => preValue + e.target.textContent);
       console.log(value);
     }
-    console.log(underlimit);
   };
 
   const onInputElse = (e) => {
@@ -58,7 +77,7 @@ function Money() {
     <>
       <MoneyBlock>
         <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</h1>
-        <h4>최대 200만원까지 입력할 수 있습니다</h4>
+        <h4 className = {underLimit? 'less': 'excess'}>최대 200만원까지 입력할 수 있습니다</h4>
       </MoneyBlock>
       <ButtonBlock>
         <Button onClick= {onInputNum}>1</Button>
@@ -76,10 +95,10 @@ function Money() {
         <Button onClick= {onInputNum}>9</Button>
         <br/>
 
-        <Button Cancel = {true} disabled = {inActive} onClick= {onInputElse} CancelBack>취소</Button>
+        <Button onClick= {onInputElse} Cancel = {true} disabled = {inActive} >취소</Button>
         <Button onClick= {onInputNum}>0</Button>
-        <Button Back = {true} disabled = {inActive} onClick= {onInputElse}>⬅︎</Button>
-        <Button Send = {true} disabled = {inActive}  onClick= {onInputElse}>보내기</Button>
+        <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
+        <Button onClick= {onInputElse} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
     </>
   )
