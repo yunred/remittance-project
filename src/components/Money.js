@@ -20,6 +20,7 @@ const MoneyBlock = styled.div`
   }
   .excess{
     visibility: 'visible';
+    color: gray;
   }
 `;
 
@@ -70,6 +71,7 @@ function Money() {
         setValue((preValue) => preValue.slice(0,-1));
       }   
     }
+    setunderLimit(true);
   }
 
 
