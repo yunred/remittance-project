@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from './ButtonStyle';
+import Template from './Template';
+import GlobalStyle from './Globalstyle';
 
 const MoneyBlock = styled.div`
   padding-top: 100px;
@@ -34,7 +36,7 @@ const ButtonBlock = styled.div`
 `;
 
 
-function Money() {
+function Money( {history} ) { //route
   const [value, setValue] = useState('0');
   const [inActive, setInactive] = useState(true);
   const [underLimit, setunderLimit] = useState(true);
@@ -76,7 +78,9 @@ function Money() {
 
 
   return(
-    <>
+    <>    
+    <GlobalStyle/>
+    <Template>
       <MoneyBlock>
         <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</h1>
         <h4 className = {underLimit? 'less': 'excess'}>최대 200만원까지 입력할 수 있습니다</h4>
@@ -100,8 +104,9 @@ function Money() {
         <Button onClick= {onInputElse} Cancel = {true} disabled = {inActive} >취소</Button>
         <Button onClick= {onInputNum}>0</Button>
         <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
-        <Button onClick= {onInputElse} Send = {true} disabled = {inActive}>보내기</Button>
+        <Button onClick= {()=>{history.push("/List")}} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
+    </Template>
     </>
   )
 
