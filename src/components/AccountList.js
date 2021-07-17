@@ -11,3 +11,5 @@ function AccountList(){
     </>
   )
 }
+
+export default AccountList;

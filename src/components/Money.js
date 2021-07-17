@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from './ButtonStyle';
 import Template from './Template';
-import GlobalStyle from './Globalstyle';
 
 const MoneyBlock = styled.div`
   padding-top: 100px;
@@ -79,7 +78,6 @@ function Money( {history} ) { //route
 
   return(
     <>    
-    <GlobalStyle/>
     <Template>
       <MoneyBlock>
         <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</h1>
@@ -104,7 +102,7 @@ function Money( {history} ) { //route
         <Button onClick= {onInputElse} Cancel = {true} disabled = {inActive} >취소</Button>
         <Button onClick= {onInputNum}>0</Button>
         <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
-        <Button onClick= {()=>{history.push("/List")}} Send = {true} disabled = {inActive}>보내기</Button>
+        <Button onClick= {()=>{history.push({pathname:"/List", state:{value:value}})}} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
     </Template>
     </>
