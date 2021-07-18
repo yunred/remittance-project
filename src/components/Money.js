@@ -63,7 +63,6 @@ function Money( {history} ) { //route
     if(e.target.textContent === '취소'){
       setValue('0');
       setInactive(true);
-      console.log('취소누름');
     }else if(e.target.textContent === '⬅︎'){
       if(value.length === 1){ //10미만일 때 0으로
         setValue('0');
