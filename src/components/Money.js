@@ -20,7 +20,7 @@ const MoneyBlock = styled.div`
     visibility: hidden;
   }
   .excess{
-    visibility: 'visible';
+    visibility: visible;
     color: gray;
   }
 `;
