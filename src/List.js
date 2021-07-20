@@ -5,7 +5,7 @@ import Back from './components/Back';
 import PersonList from './components/PersonList';
 
 
-function List({history}){
+function List( {history} ){
   const location = useLocation(); //금액 받아오기
   const value = location.state.value;
   console.log(value);
@@ -14,7 +14,7 @@ function List({history}){
     <>
     <Template>
       <Back history = {history} value = {value}/>
-      <PersonList/>
+      <PersonList value = {value}/>
     </Template>
     </>
   )

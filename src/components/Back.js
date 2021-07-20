@@ -32,6 +32,7 @@ const SendMoney = styled.div`
   align-items : center;
   justify-content: center;
   margin : 0 auto;
+  padding: 0 40px 0 0;
 
   h4{
     visibility: ${props=>props.isMarked? 'visible' :'hiden'};

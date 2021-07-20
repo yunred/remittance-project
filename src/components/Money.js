@@ -14,7 +14,6 @@ const MoneyBlock = styled.div`
 
   h1{
     font-size: 42px;
-
   }
   .less {
     visibility: hidden;
@@ -101,7 +100,8 @@ function Money( {history} ) { //route
         <Button onClick= {onInputElse} Cancel = {true} disabled = {inActive} >취소</Button>
         <Button onClick= {onInputNum}>0</Button>
         <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
-        <Button onClick= {()=>{history.push({pathname:"/List", state:{value:value}})}} Send = {true} disabled = {inActive}>보내기</Button>
+        <br/>
+        <Button onClick= {()=>{history.push({pathname:"/list", state:{value:value}})}} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
     </Template>
     </>

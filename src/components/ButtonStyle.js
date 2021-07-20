@@ -7,11 +7,9 @@ const StyledButton = styled.button`
   border: none;
   color: 'black';
   cursor: pointer;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin: auto;
+  align-items : center;
   justify-content: center;
-  align-item: center;
+  margin : 0 auto;
   
   /* 크기 */
   width: 100px;
@@ -50,8 +48,9 @@ const StyledButton = styled.button`
     props.Send &&
     css`
       font-size: 20px;
+      width : 340px;
+      border-radius : 10px;
       color: ${props=>props.disabled? 'none' : 'white'};
-      width : 300px;
       background : ${props=>props.disabled? '#C5D7EE' : '#588DF2'};
     `}
 
