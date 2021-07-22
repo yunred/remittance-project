@@ -102,11 +102,11 @@ function PersonList( {history} ){
   return(
     <ListBlock> 
       {persons.map((person, index) => {
-        return <PersonBlock onClick= {()=>{history.push({pathname:"/deposit", state:{value:value, person:persons[index]}})}}>
+        return <PersonBlock key = {person._id} onClick= {()=>{history.push({pathname:"/deposit", state:{value:value, person:persons[index]}})}}>
           <Circle><img src={person.bankImageUrl}/></Circle>
           <AccountImfo>
-            <p class="c1">{person.accountHolder}</p>
-            <p class="c2">{person.bankName} {person.accountNumber}</p>
+            <p className="c1">{person.accountHolder}</p>
+            <p className="c2">{person.bankName} {person.accountNumber}</p>
           </AccountImfo>
         </PersonBlock>
       })}       

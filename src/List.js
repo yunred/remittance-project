@@ -13,7 +13,7 @@ function List( {history} ){
   return(
     <>
     <Template>
-      <Back history = {history} value = {value}/>
+      <Back history = {history} value = {value} isMarked/>
       <PersonList value = {value}/>
     </Template>
     </>
