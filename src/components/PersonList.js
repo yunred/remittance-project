@@ -18,8 +18,9 @@ const PersonBlock = styled.button`
   flex-direction: row; 
   background: none;
   border: none;
-
-
+  &:active {
+    background: #F5FFFA;
+  }
 `;
 
 const Circle = styled.div`
@@ -89,7 +90,7 @@ function PersonList( {history} ){
 
     fetchPersons();
     return () => {
-      abortController.abort()
+      abortController.abort();
     }
   }, []);
 

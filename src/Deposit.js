@@ -164,6 +164,16 @@ function Deposit( {history} ){
   if (error) return <div>에러 발생</div>;
   if (!accounts) return null;
 
+  const resultBtn = () =>{
+    alert(`
+    보낼 사람: ${person.accountHolder}
+    보낼 계좌번호: ${person.accountNumber}
+    보낼 금액: ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+    출금계좌:  ${accounts[checked].accountName}`);
+  }
+
+
+
   return(
     <>
     <Template>
@@ -193,7 +203,7 @@ function Deposit( {history} ){
     </DepositBlock>
 
 
-    <Button onClick= {()=>{}} Send = {true}>보내기</Button>
+    <Button onClick={()=>resultBtn()} Send = {true}>보내기</Button>
     </Template>
     </>
   )
