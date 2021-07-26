@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Money from './components/Money.js';
-import List from './List.js';
-import GlobalStyle from './components/Globalstyle.js';
-import Deposit from './Deposit.js';
+import List from './components/List.js';
+import GlobalStyle from './common/Globalstyle.js';
+import Deposit from './components/Deposit.js';
 
 function App(){
   return(

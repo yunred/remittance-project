@@ -1,8 +1,8 @@
 import React from 'react';
 import {useLocation} from "react-router";
-import Template from './components/Template';
-import Back from './components/Back';
-import PersonList from './components/PersonList';
+import Template from '../common/Template';
+import Back from '../common/Back';
+import PersonList from '../common/PersonList';
 
 
 function List( {history} ){

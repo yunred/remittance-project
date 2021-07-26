@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router";
 import styled from 'styled-components';
 import axios from 'axios';
-import Template from './components/Template';
-import Back from './components/Back';
-import Button from './components/ButtonStyle';
+import Template from '../common/Template';
+import Back from '../common/Back';
+import Button from '../common/ButtonStyle';
 import check from './check.png';
 
 

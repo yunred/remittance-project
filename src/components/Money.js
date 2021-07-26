@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import Button from './ButtonStyle';
-import Template from './Template';
+import Button from '../common/ButtonStyle';
+import Template from '../common/Template';
 
 const MoneyBlock = styled.div`
   padding-top: 100px;
