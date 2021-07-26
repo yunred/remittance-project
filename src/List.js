@@ -8,7 +8,6 @@ import PersonList from './components/PersonList';
 function List( {history} ){
   const location = useLocation(); //금액 받아오기
   const value = location.state.value;
-  console.log(value);
 
   return(
     <>

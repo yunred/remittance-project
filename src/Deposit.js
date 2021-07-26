@@ -110,7 +110,7 @@ const Check = styled.div`
   }
 
 `;
-const AccountImfo= styled.div`
+const AccountInfo= styled.div`
   height: 50px;
   background: none;
   text-align: left;
@@ -147,7 +147,6 @@ function Deposit( {history} ){
         setLoading(true);
         const res = await axios.get('https://inha-graduation-exhibition-api.herokuapp.com/my-accounts');
         setAccounts(res.data); //데이터가 res.data에 있음
-        console.log(res);
       }catch(e){
         setError(e); //e가뭐야
       }
@@ -192,10 +191,10 @@ function Deposit( {history} ){
       {accounts.map((account, index) => {
         return <PersonBlock key = {account._id} onClick= {()=>setChecked(index)}>
           <Circle><img src={account.bankImageUrl}/></Circle>
-          <AccountImfo>
+          <AccountInfo>
             <p className="c1">{account.accountName}</p>
             <p className="c2">{account.accountBalance}</p>
-          </AccountImfo>
+          </AccountInfo>
           <Check index={index} checked={checked}><img src={check} alt='check'/></Check>
         </PersonBlock>
       })}

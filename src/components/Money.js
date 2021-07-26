@@ -51,10 +51,8 @@ function Money( {history} ) { //route
     }else if((value + e.target.textContent)>2000000){ //200만원 초과할때
       setValue('2000000');
       setunderLimit(false);
-      console.log(underLimit);
     }else{
       setValue((preValue) => preValue + e.target.textContent);
-      console.log(value);
     }
   };
 

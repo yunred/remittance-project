@@ -59,10 +59,6 @@ const AccountImfo= styled.div`
 `;
 
 
-
-
-
-
 function PersonList( {history} ){
   const [persons, setPersons] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -70,7 +66,6 @@ function PersonList( {history} ){
 
   const location = useLocation(); //금액 받아오기
   const value = location.state.value;
-  console.log(value);
 
   useEffect(()=>{
     let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
@@ -81,7 +76,6 @@ function PersonList( {history} ){
         setLoading(true);
         const res = await axios.get('https://inha-graduation-exhibition-api.herokuapp.com/transfer-accounts');
         setPersons(res.data); //데이터가 res.data에 있음
-        console.log(res);
       }catch(e){
         setError(e); //e가뭐야
       }
