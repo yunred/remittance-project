@@ -3,8 +3,8 @@ const DEPOSIT_ACCOUNT = ' account/DEPOSIT_ACCOUNT';
 const WITHDRAWAL_ACCOUNT = ' account/WITHDRAWAL_ACCOUNT';
 
 //액션 생성함수, export로 내보내기
-export const depositAccount = account => ({type: DEPOSIT_ACCOUNT, account});
-export const WithdrawalAccount = account => ({type: WITHDRAWAL_ACCOUNT, account});
+export const depositAccount = data => ({type: DEPOSIT_ACCOUNT, data});
+export const WithdrawalAccount = data => ({type: WITHDRAWAL_ACCOUNT, data});
 
 
 const initialState = {
@@ -14,15 +14,15 @@ const initialState = {
 
 export default function account(state = initialState, action){
   switch(action.type){
-    case SELECT_ACCOUNT:
+    case DEPOSIT_ACCOUNT:
       return {
         ...state,
-        deposit: action.deposit
+        deposit: action.data
       };
     case WITHDRAWAL_ACCOUNT:
       return {
         ...state,
-        withdrawal: action.withdrawal
+        withdrawal: action.data
       };
     default:
       return state;

@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from '../common/ButtonStyle';
 import Template from '../common/Template';
+import { useDispatch } from 'react-redux';
+import { setMoney } from '../modules/amount';
 
 const MoneyBlock = styled.div`
   padding-top: 100px;
@@ -38,7 +40,7 @@ function Money( {history} ) { //route
   const [value, setValue] = useState('0');
   const [inActive, setInactive] = useState(true);
   const [underLimit, setunderLimit] = useState(true);
-  //취소, <- 버튼, 보내기버튼 활성화
+  const dispatch = useDispatch();
 
   const onInputNum = (e) =>{
     if (value === '0'){ //0원일 때
@@ -73,7 +75,7 @@ function Money( {history} ) { //route
 
   const listBtn =()=>{
     history.push('/list');
-    store.dispatch(setMoney(value));
+    dispatch(setMoney(value));
   }
 
 
@@ -104,7 +106,7 @@ function Money( {history} ) { //route
         <Button onClick= {onInputNum}>0</Button>
         <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
         <br/>
-        <Button onClick= {()=>listBtn} Send = {true} disabled = {inActive}>보내기</Button>
+        <Button onClick= {()=>listBtn()} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
     </Template>
     </>

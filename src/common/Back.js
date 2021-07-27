@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
+import {useSelector} from 'react-redux';
 
 const BackBar = styled.div`
   width: 375px;
@@ -44,17 +45,18 @@ const SendMoney = styled.div`
 
 `;
 
-function Back({ children, history, value, isMarked, ...rest}){
-  //color: ${props=>props.isMarked? 'black' :'white'};
-  //visibility: ${props=>props.ismarked? 'visible' :'hidden'};
+function Back({ children, history, isMarked, ...rest}){
   //isMarked는 상단바에 송금표시..
-  //isMarked의 styled component에 props 연결!!!!!!
+  //isMarked의 styled component에 props 연결
+
+  const money = useSelector((state)=> state.amount.money);
+
   return(
   <>
     <BackBar>
       <BackButton onClick={ () => {history.goBack()} }  {...rest}> &lsaquo;</BackButton>
       <SendMoney isMarked = {isMarked}>
-        <h4>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 송금</h4>
+        <h4>{money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 송금</h4>
       </SendMoney>
     </BackBar>
   </>

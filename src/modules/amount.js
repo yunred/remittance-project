@@ -2,7 +2,7 @@
 const SET_MONEY = 'amount/SET_MONEY';
 
 //액션 생성함수, export로 내보내기
-export const setMoney = money => ({type: SET_MONEY, money});
+export const setMoney = data => ({type: SET_MONEY, data});
 
 
 const initialState = {
@@ -15,7 +15,7 @@ export default function amount(state = initialState, action){
     case SET_MONEY:
       return {
         ...state,
-        money: action.money
+        money: action.data
       };
       default:
         return state;

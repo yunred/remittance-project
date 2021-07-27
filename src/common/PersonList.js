@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom'
-import {useLocation} from "react-router";
 import styled from 'styled-components';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {depositAccount} from '../modules/account';
 
 const ListBlock = styled.div`
   height: 100vh;
@@ -12,7 +13,7 @@ const ListBlock = styled.div`
   justify-content: space-around;
 `;
 
-const PersonBlock = styled.button`
+const PersonButton = styled.button`
   height: 70px;
   display: flex;
   flex-direction: row; 
@@ -63,9 +64,7 @@ function PersonList( {history} ){
   const [persons, setPersons] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const location = useLocation(); //금액 받아오기
-  const value = location.state.value;
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
@@ -92,18 +91,22 @@ function PersonList( {history} ){
   if (error) return <div>에러 발생</div>;
   if (!persons) return null;
 
-
+  const selectBtn = (data) =>{
+    history.push("/deposit");
+    dispatch(depositAccount(data));
+  }
+  //onClick= {()=>{history.push({pathname:"/deposit", state:{value:value, person:persons[index]}})}}
 
   return(
     <ListBlock> 
       {persons.map((person, index) => {
-        return <PersonBlock key = {person._id} onClick= {()=>{history.push({pathname:"/deposit", state:{value:value, person:persons[index]}})}}>
+        return <PersonButton key = {person._id} onClick= {()=>selectBtn(persons[index])}>
           <Circle><img src={person.bankImageUrl}/></Circle>
           <AccountImfo>
             <p className="c1">{person.accountHolder}</p>
             <p className="c2">{person.bankName} {person.accountNumber}</p>
           </AccountImfo>
-        </PersonBlock>
+        </PersonButton>
       })}       
     </ListBlock>
   );

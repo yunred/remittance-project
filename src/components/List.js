@@ -6,14 +6,12 @@ import PersonList from '../common/PersonList';
 
 
 function List( {history} ){
-  const location = useLocation(); //금액 받아오기
-  const value = location.state.value;
 
   return(
     <>
     <Template>
-      <Back history = {history} value = {value} isMarked/>
-      <PersonList value = {value}/>
+      <Back history = {history} isMarked/>
+      <PersonList/>
     </Template>
     </>
   )

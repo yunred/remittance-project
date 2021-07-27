@@ -6,7 +6,7 @@ import Template from '../common/Template';
 import Back from '../common/Back';
 import Button from '../common/ButtonStyle';
 import check from '../check.png';
-
+import {useSelector} from 'react-redux';
 
 const DepositBlock = styled.div`
   height: 55vh;
@@ -132,11 +132,10 @@ function Deposit( {history} ){
   const [accounts, setAccounts] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const location = useLocation(); //금액 받아오기
-  const value = location.state.value;
-  const person = location.state.person;
-  console.log(value);
-  console.log(person);
+
+  const money = useSelector((state)=> state.amount.money);
+  const depositPerson = useSelector((state)=> state.account.deposit);
+
 
   useEffect(()=>{
     let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
@@ -165,25 +164,25 @@ function Deposit( {history} ){
 
   const resultBtn = () =>{
     alert(`
-    보낼 사람: ${person.accountHolder}
-    보낼 계좌번호: ${person.accountNumber}
-    보낼 금액: ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+    보낼 사람: ${depositPerson.accountHolder}
+    보낼 계좌번호: ${depositPerson.accountNumber}
+    보낼 금액: ${money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
     출금계좌:  ${accounts[checked].accountName}`);
   }
 
-
+  
 
   return(
     <>
     <Template>
-    <Back history = {history} value = {value}/>
+    <Back history = {history}/>
     <DepositBlock>
       
     <RecipientBlock>
-      <p><span>{person.accountHolder}</span>님 계좌로 <br/>
-      <span>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span> 을 보냅니다</p>
-      <RecipientCircle><img src={person.bankImageUrl}/></RecipientCircle>
-      <p className ="num">{person.bankName} {person.accountNumber}</p>
+      <p><span>{depositPerson.accountHolder}</span>님 계좌로 <br/>
+      <span>{money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span> 을 보냅니다</p>
+      <RecipientCircle><img src={depositPerson.bankImageUrl}/></RecipientCircle>
+      <p className ="num">{depositPerson.bankName} {depositPerson.accountNumber}</p>
     </RecipientBlock>
 
     <SenderBlock>
