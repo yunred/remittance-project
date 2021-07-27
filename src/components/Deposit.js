@@ -5,7 +5,7 @@ import axios from 'axios';
 import Template from '../common/Template';
 import Back from '../common/Back';
 import Button from '../common/ButtonStyle';
-import check from './check.png';
+import check from '../check.png';
 
 
 const DepositBlock = styled.div`

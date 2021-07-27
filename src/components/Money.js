@@ -71,6 +71,11 @@ function Money( {history} ) { //route
     setunderLimit(true);
   }
 
+  const listBtn =()=>{
+    history.push('/list');
+    store.dispatch(setMoney(value));
+  }
+
 
   return(
     <>    
@@ -99,7 +104,7 @@ function Money( {history} ) { //route
         <Button onClick= {onInputNum}>0</Button>
         <Button onClick= {onInputElse} Back = {true} disabled = {inActive} >⬅︎</Button>
         <br/>
-        <Button onClick= {()=>{history.push({pathname:"/list", state:{value:value}})}} Send = {true} disabled = {inActive}>보내기</Button>
+        <Button onClick= {()=>listBtn} Send = {true} disabled = {inActive}>보내기</Button>
       </ButtonBlock>
     </Template>
     </>
