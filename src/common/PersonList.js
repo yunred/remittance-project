@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {depositAccount} from '../modules/account';
 
 const ListBlock = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: column; 
   background: none;
@@ -19,6 +18,7 @@ const PersonButton = styled.button`
   flex-direction: row; 
   background: none;
   border: none;
+  margin: 1px 0;
   &:active {
     background: #F5FFFA;
   }
@@ -42,7 +42,7 @@ const Circle = styled.div`
 
 `;
 
-const AccountImfo= styled.div`
+const AccountInfo= styled.div`
   height: 50px;
   background: none;
   text-align: left;
@@ -102,10 +102,10 @@ function PersonList( {history} ){
       {persons.map((person, index) => {
         return <PersonButton key = {person._id} onClick= {()=>selectBtn(persons[index])}>
           <Circle><img src={person.bankImageUrl}/></Circle>
-          <AccountImfo>
+          <AccountInfo>
             <p className="c1">{person.accountHolder}</p>
             <p className="c2">{person.bankName} {person.accountNumber}</p>
-          </AccountImfo>
+          </AccountInfo>
         </PersonButton>
       })}       
     </ListBlock>

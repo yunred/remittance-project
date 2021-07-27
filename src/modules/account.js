@@ -4,7 +4,7 @@ const WITHDRAWAL_ACCOUNT = ' account/WITHDRAWAL_ACCOUNT';
 
 //액션 생성함수, export로 내보내기
 export const depositAccount = data => ({type: DEPOSIT_ACCOUNT, data});
-export const WithdrawalAccount = data => ({type: WITHDRAWAL_ACCOUNT, data});
+export const withdrawalAccount = data => ({type: WITHDRAWAL_ACCOUNT, data});
 
 
 const initialState = {

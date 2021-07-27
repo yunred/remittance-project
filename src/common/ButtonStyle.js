@@ -5,16 +5,18 @@ const StyledButton = styled.button`
   display: inline-flex;
   outline: none;
   border: none;
-  color: 'black';
+  color: black;
   cursor: pointer;
   align-items : center;
   justify-content: center;
   margin : 0 auto;
+  padding : 10px;
   
   /* 크기 */
   width: 100px;
-  height: 70px;
+  height: 55px;
   font-size: 40px;
+  font-weight: normal;
 
   /* 색상 */
   background: none;
@@ -47,8 +49,12 @@ const StyledButton = styled.button`
   ${props =>
     props.Send &&
     css`
+      position: absolute;
+      width: 363px;
+      height: 59px;
+      left: 6px;
+      top: 598px;
       font-size: 20px;
-      width : 340px;
       border-radius : 10px;
       color: ${props=>props.disabled? 'none' : 'white'};
       background : ${props=>props.disabled? '#C5D7EE' : '#588DF2'};

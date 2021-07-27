@@ -35,6 +35,10 @@ const SendMoney = styled.div`
   margin : 0 auto;
   padding: 0 40px 0 0;
 
+  h4{
+    font-weight: 600;
+  }
+
   ${props =>
     props.isMarked ||
     css`

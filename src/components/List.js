@@ -1,5 +1,4 @@
 import React from 'react';
-import {useLocation} from "react-router";
 import Template from '../common/Template';
 import Back from '../common/Back';
 import PersonList from '../common/PersonList';

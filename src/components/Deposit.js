@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {useLocation} from "react-router";
 import styled from 'styled-components';
 import axios from 'axios';
 import Template from '../common/Template';
 import Back from '../common/Back';
 import Button from '../common/ButtonStyle';
 import check from '../check.png';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { withdrawalAccount } from '../modules/account';
 
 const DepositBlock = styled.div`
-  height: 55vh;
+  height: 62vh;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: space-between;
 
   .num{
@@ -61,10 +62,11 @@ const RecipientCircle = styled.div`
 const SenderBlock = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   padding: 12px; 
 `;
 
-const PersonBlock = styled.button`
+const PersonButton = styled.button`
   height: 70px;
   display: flex;
   flex-direction: row; 
@@ -132,10 +134,11 @@ function Deposit( {history} ){
   const [accounts, setAccounts] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   const money = useSelector((state)=> state.amount.money);
   const depositPerson = useSelector((state)=> state.account.deposit);
-
+  
 
   useEffect(()=>{
     let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
@@ -162,7 +165,8 @@ function Deposit( {history} ){
   if (error) return <div>에러 발생</div>;
   if (!accounts) return null;
 
-  const resultBtn = () =>{
+  const ResultBtn = () =>{
+    dispatch(withdrawalAccount(accounts[checked]));
     alert(`
     보낼 사람: ${depositPerson.accountHolder}
     보낼 계좌번호: ${depositPerson.accountNumber}
@@ -188,20 +192,20 @@ function Deposit( {history} ){
     <SenderBlock>
       <p className="num">출금 계좌</p>
       {accounts.map((account, index) => {
-        return <PersonBlock key = {account._id} onClick= {()=>setChecked(index)}>
+        return <PersonButton key = {account._id} onClick= {()=>setChecked(index)}>
           <Circle><img src={account.bankImageUrl}/></Circle>
           <AccountInfo>
             <p className="c1">{account.accountName}</p>
             <p className="c2">{account.accountBalance}</p>
           </AccountInfo>
           <Check index={index} checked={checked}><img src={check} alt='check'/></Check>
-        </PersonBlock>
+        </PersonButton>
       })}
     </SenderBlock>
     </DepositBlock>
 
 
-    <Button onClick={()=>resultBtn()} Send = {true}>보내기</Button>
+    <Button onClick={()=>ResultBtn()} Send = {true}>보내기</Button>
     </Template>
     </>
   )

@@ -13,14 +13,16 @@ const MoneyBlock = styled.div`
   align-items: center;
   text-align: center;
   margin: 0 auto;
-
+  
   h1{
     font-size: 42px;
+    font-weight: normal;
   }
   .less {
     visibility: hidden;
   }
   .excess{
+    font-weight: normal;
     visibility: visible;
     color: gray;
   }
@@ -28,7 +30,7 @@ const MoneyBlock = styled.div`
 
 const ButtonBlock = styled.div`
   text-align: center;
-  padding-top: 10px;
+  padding-top: 54px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
