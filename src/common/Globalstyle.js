@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+/* eslint-disable */
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body{

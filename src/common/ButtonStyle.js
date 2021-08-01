@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
   display: inline-flex;
@@ -7,11 +9,11 @@ const StyledButton = styled.button`
   border: none;
   color: black;
   cursor: pointer;
-  align-items : center;
+  align-items: center;
   justify-content: center;
-  margin : 0 auto;
-  padding : 10px;
-  
+  margin: 0 auto;
+  padding: 10px;
+
   /* 크기 */
   width: 100px;
   height: 55px;
@@ -21,10 +23,10 @@ const StyledButton = styled.button`
   /* 색상 */
   background: none;
   &:hover {
-    color : ${props=>props.disabled? 'none' : 'gray'};
+    color: ${(props) => (props.disabled ? 'none' : 'gray')};
   }
   &:active {
-    background: #F5FFFA;
+    background: #f5fffa;
   }
 
   /* 기타 */
@@ -32,21 +34,21 @@ const StyledButton = styled.button`
     margin-left: 1rem;
   }
 
-  ${props =>
+  ${(props) =>
     props.Cancel &&
     css`
       font-size: 20px;
-      color: ${props=>props.disabled? 'white' : 'black'};
+      color: ${(props) => (props.disabled ? 'white' : 'black')};
     `}
 
-  ${props =>
+  ${(props) =>
     props.Back &&
     css`
       font-size: 20px;
-      color: ${props=>props.disabled? 'white' : 'black'};
+      color: ${(props) => (props.disabled ? 'white' : 'black')};
     `}
 
-  ${props =>
+  ${(props) =>
     props.Send &&
     css`
       position: absolute;
@@ -55,16 +57,15 @@ const StyledButton = styled.button`
       left: 6px;
       top: 598px;
       font-size: 20px;
-      border-radius : 10px;
-      color: ${props=>props.disabled? 'none' : 'white'};
-      background : ${props=>props.disabled? '#C5D7EE' : '#588DF2'};
+      border-radius: 10px;
+      color: ${(props) => (props.disabled ? 'none' : 'white')};
+      background: ${(props) => (props.disabled ? '#C5D7EE' : '#588DF2')};
     `}
-
 `;
 
-function Button({ children, Cancel, Send, Back, ...rest}) {
+function Button({ children, Cancel, Send, Back, ...rest }) {
   return (
-    <StyledButton Cancel = {Cancel} Send = {Send} Back = {Back} {...rest}>
+    <StyledButton Cancel={Cancel} Send={Send} Back={Back} {...rest}>
       {children}
     </StyledButton>
   );
