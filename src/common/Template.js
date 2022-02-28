@@ -10,7 +10,7 @@ const TemplateBlock = styled.div`
   background: #ffffff;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
 
-  margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
+  margin: 0 auto;
   margin-top: 96px;
 `;
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const BackBar = styled.div`
   width: 375px;
@@ -48,21 +49,20 @@ const SendMoney = styled.div`
     `}
 `;
 
-function Back({ children, history, isMarked, ...rest }) {
+function Back({ children, isMarked, ...rest }) {
   //isMarked는 상단바에 송금표시..
   //isMarked의 styled component에 props 연결
 
   const money = useSelector((state) => state.amount.money);
-
+  const navigate = useNavigate();
   return (
     <>
       <BackBar>
         <BackButton
           onClick={() => {
-            history.goBack();
+            navigate(-1);
           }}
           {...rest}>
-          {' '}
           &lsaquo;
         </BackButton>
         <SendMoney isMarked={isMarked}>
