@@ -1,52 +1,21 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import Button from '../common/ButtonStyle';
-import Template from '../common/Template';
+import Button from 'common/ButtonStyle';
+import Template from 'common/Template';
 import { useDispatch } from 'react-redux';
-import { setMoney } from '../modules/amount';
+import { setMoney } from 'Redux/amount';
+import { useNavigate } from 'react-router-dom';
+import * as S from 'components/Money/style.Money';
 
-const MoneyBlock = styled.div`
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 30px;
-  align-items: center;
-  text-align: center;
-  margin: 0 auto;
-
-  h1 {
-    font-size: 42px;
-    font-weight: normal;
-  }
-  .less {
-    visibility: hidden;
-  }
-  .excess {
-    font-weight: normal;
-    visibility: visible;
-    color: gray;
-  }
-`;
-
-const ButtonBlock = styled.div`
-  text-align: center;
-  padding-top: 54px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-`;
-
-function Money({ history }) {
-  //route
+function Money() {
   const [value, setValue] = useState('0');
   const [inActive, setInactive] = useState(true);
   const [underLimit, setunderLimit] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onInputNum = (e) => {
     if (value === '0') {
-      //0원일 때
       setValue(e.target.textContent);
       if (e.target.textContent === '0') {
         setInactive(true);
@@ -79,20 +48,20 @@ function Money({ history }) {
   };
 
   const listBtn = () => {
-    history.push('/list');
+    navigate('/list');
     dispatch(setMoney(value));
   };
 
   return (
     <>
       <Template>
-        <MoneyBlock>
+        <S.MoneyBlock>
           <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</h1>
           <h4 className={underLimit ? 'less' : 'excess'}>
             최대 200만원까지 입력할 수 있습니다
           </h4>
-        </MoneyBlock>
-        <ButtonBlock>
+        </S.MoneyBlock>
+        <S.ButtonBlock>
           <Button onClick={onInputNum}>1</Button>
           <Button onClick={onInputNum}>2</Button>
           <Button onClick={onInputNum}>3</Button>
@@ -119,7 +88,7 @@ function Money({ history }) {
           <Button onClick={() => listBtn()} Send={true} disabled={inActive}>
             보내기
           </Button>
-        </ButtonBlock>
+        </S.ButtonBlock>
       </Template>
     </>
   );
