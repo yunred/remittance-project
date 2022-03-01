@@ -21,7 +21,7 @@ export const MoneyBlock = styled.div`
   .excess {
     font-weight: normal;
     visibility: visible;
-    color: ${colors.gray};
+    color: ${colors.gray200};
   }
 `;
 export const AmountSpan = styled.span`
