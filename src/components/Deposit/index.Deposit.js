@@ -61,8 +61,7 @@ function Deposit() {
 
   const ResultBtn = () => {
     dispatch(withdrawalAccount(accounts[checked]));
-    console.log(accounts[checked].accountBalance);
-    console.log(money);
+
     if (Number(money) > Number(accounts[checked].accountBalance)) {
       alert('계좌의 잔액이 부족합니다. 확인 후 다시 이용해주세요.');
       return;
