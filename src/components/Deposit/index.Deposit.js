@@ -8,6 +8,7 @@ import check from 'check.png';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { withdrawalAccount } from 'Redux/account';
+import Loading from 'common/Loading';
 import * as S from './style.Deposit';
 
 function Deposit() {
@@ -54,7 +55,7 @@ function Deposit() {
     };
   }, []);
 
-  if (loading) return <div>로딩중</div>;
+  if (loading) return <Loading />;
   if (error) return <div>에러 발생</div>;
   if (!accounts) return null;
 
@@ -81,17 +82,19 @@ function Deposit() {
         <Back />
         <S.DepositBlock>
           <S.RecipientBlock>
-            <span>
-              <span className="bold">{depositPerson.accountHolder}</span>님
-              계좌로 <br />
-              <span className="bold">
-                {money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+            <div className="flex">
+              <span>
+                <span className="bold">{depositPerson.accountHolder}</span>님
+                계좌로 <br />
+                <span className="bold">
+                  {money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+                </span>
+                을 보냅니다
               </span>
-              을 보냅니다
-            </span>
-            <S.RecipientCircle>
-              <img src={depositPerson.bankImageUrl} />
-            </S.RecipientCircle>
+              <S.RecipientCircle>
+                <img src={depositPerson.bankImageUrl} />
+              </S.RecipientCircle>
+            </div>
             <span className="small margin_top">
               {depositPerson.bankName} {depositPerson.accountNumber}
             </span>

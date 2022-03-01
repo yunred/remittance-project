@@ -14,7 +14,7 @@ export const DepositBlock = styled.div`
 
 export const RecipientBlock = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   background: none;
   justify-content: space-between;
@@ -29,6 +29,10 @@ export const RecipientBlock = styled.div`
   }
   .margin_top {
     margin-top: 8px;
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 

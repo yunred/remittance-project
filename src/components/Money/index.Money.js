@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import Button from 'common/ButtonStyle';
-import Template from 'common/Template';
 import { useDispatch } from 'react-redux';
 import { setMoney } from 'Redux/amount';
 import { useNavigate } from 'react-router-dom';

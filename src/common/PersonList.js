@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { depositAccount } from '../Redux/account';
 import { useNavigate } from 'react-router-dom';
 import colors from 'styles/colors';
+import Loading from 'common/Loading';
 
 function PersonList() {
   const [persons, setPersons] = useState(null);
@@ -37,7 +38,7 @@ function PersonList() {
     };
   }, []);
 
-  if (loading) return <div>로딩중</div>;
+  if (loading) return <Loading />;
   if (error) return <div>에러 발생</div>;
   if (!persons) return null;
 

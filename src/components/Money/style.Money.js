@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import colors from 'styles/colors';
 
 export const MoneyBlock = styled.div`
@@ -21,10 +21,22 @@ export const MoneyBlock = styled.div`
     color: ${colors.gray200};
   }
 `;
+
 export const AmountSpan = styled.span`
+  @keyframes Down {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 10px;
+  animation: Down 0.3s;
 `;
 export const WarningSpan = styled.span`
   font-size: 14px;
