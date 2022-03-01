@@ -7,7 +7,7 @@ import Button from 'common/ButtonStyle';
 import check from 'check.png';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { withdrawalAccount } from 'redux/account';
+import { withdrawalAccount } from 'reduxModule/account';
 import Loading from 'common/Loading';
 import * as S from './style.Deposit';
 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Button from 'common/ButtonStyle';
 import { useDispatch } from 'react-redux';
-import { setMoney } from 'redux/amount';
+import { setMoney } from 'reduxModule/amount';
 import { useNavigate } from 'react-router-dom';
 import * as S from 'pages/Money/style.Money';
 
