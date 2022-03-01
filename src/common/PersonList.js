@@ -24,9 +24,8 @@ function PersonList() {
           'https://inha-graduation-exhibition-api.herokuapp.com/transfer-accounts',
         );
         setPersons(res.data);
-        console.log(res.data);
       } catch (e) {
-        setError(e); //e가뭐야
+        setError(e);
       }
       setLoading(false);
     };

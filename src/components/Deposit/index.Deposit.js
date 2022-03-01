@@ -30,9 +30,9 @@ function Deposit() {
         const res = await axios.get(
           'https://inha-graduation-exhibition-api.herokuapp.com/my-accounts',
         );
-        setAccounts(res.data); //데이터가 res.data에 있음
+        setAccounts(res.data);
       } catch (e) {
-        setError(e); //e가뭐야
+        setError(e);
       }
       setLoading(false);
     };
