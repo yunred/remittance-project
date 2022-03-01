@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import Button from 'common/ButtonStyle';
 import { useDispatch } from 'react-redux';
-import { setMoney } from 'Redux/amount';
+import { setMoney } from 'redux/amount';
 import { useNavigate } from 'react-router-dom';
-import * as S from 'components/Money/style.Money';
+import * as S from 'pages/Money/style.Money';
 
 function Money() {
   const [value, setValue] = useState('0');
