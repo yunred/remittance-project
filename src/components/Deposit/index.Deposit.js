@@ -20,6 +20,15 @@ function Deposit() {
   const money = useSelector((state) => state.amount.money);
   const depositPerson = useSelector((state) => state.account.deposit);
 
+  const additionalAccount = {
+    accountBalance: '4300000',
+    accountName: '우리은행',
+    bankImageUrl: 'https://static.toss.im/tds/icon/png/4x/icn-bank-woori.png',
+    bankName: '우리은행',
+    createdAt: '2021-07-11T17:31:09.925Z',
+    id: '60eb2add8024ffb704e5c123',
+    _id: '60eb2add8024ffb704e5c123',
+  };
   useEffect(() => {
     let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
     const fetchAccounts = async () => {
@@ -30,8 +39,9 @@ function Deposit() {
         const res = await axios.get(
           'https://inha-graduation-exhibition-api.herokuapp.com/my-accounts',
         );
-        setAccounts(res.data);
-        //console.log(res.data);
+        let newArr = res.data;
+        newArr.push(additionalAccount);
+        setAccounts(newArr);
       } catch (e) {
         setError(e);
       }
@@ -50,11 +60,19 @@ function Deposit() {
 
   const ResultBtn = () => {
     dispatch(withdrawalAccount(accounts[checked]));
-    alert(`
-    보낼 사람: ${depositPerson.accountHolder}
-    보낼 계좌번호: ${depositPerson.accountNumber}
-    보낼 금액: ${money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
-    출금계좌:  ${accounts[checked].accountName}`);
+    console.log(accounts[checked].accountBalance);
+    console.log(money);
+    if (Number(money) > Number(accounts[checked].accountBalance)) {
+      alert('계좌의 잔액이 부족합니다. 확인 후 다시 이용해주세요.');
+      return;
+    } else {
+      alert(`
+      보낼 사람: ${depositPerson.accountHolder}
+      보낼 계좌번호: ${depositPerson.accountNumber}
+      보낼 금액: ${money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+      출금계좌:  ${accounts[checked].accountName}`);
+      return;
+    }
   };
 
   return (
