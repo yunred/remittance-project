@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import colors from 'styles/colors';
+
 export const MoneyBlock = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
@@ -8,24 +12,45 @@ export const MoneyBlock = styled.div`
   text-align: center;
   margin: 0 auto;
 
-  h1 {
-    font-size: 42px;
-    font-weight: normal;
-  }
   .less {
     visibility: hidden;
   }
   .excess {
     font-weight: normal;
     visibility: visible;
-    color: gray;
+    color: ${colors.gray200};
   }
 `;
 
+export const AmountSpan = styled.span`
+  @keyframes Down {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  animation: Down 0.3s;
+`;
+export const WarningSpan = styled.span`
+  font-size: 14px;
+`;
+
 export const ButtonBlock = styled.div`
+  display: flex;
+  flex-direction: column;
   text-align: center;
   padding-top: 54px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+`;
+export const ButtonRow = styled.div`
+  margin-bottom: 8px;
 `;

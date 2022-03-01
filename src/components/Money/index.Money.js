@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import Button from 'common/ButtonStyle';
-import Template from 'common/Template';
 import { useDispatch } from 'react-redux';
 import { setMoney } from 'Redux/amount';
 import { useNavigate } from 'react-router-dom';
@@ -54,29 +53,31 @@ function Money() {
 
   return (
     <>
-      <Template>
-        <S.MoneyBlock>
-          <h1>{value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</h1>
-          <h4 className={underLimit ? 'less' : 'excess'}>
-            최대 200만원까지 입력할 수 있습니다
-          </h4>
-        </S.MoneyBlock>
-        <S.ButtonBlock>
+      <S.MoneyBlock>
+        <S.AmountSpan className="inputMoney">
+          {value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+        </S.AmountSpan>
+        <S.WarningSpan className={underLimit ? 'less' : 'excess'}>
+          최대 200만원까지 입력할 수 있습니다
+        </S.WarningSpan>
+      </S.MoneyBlock>
+      <S.ButtonBlock>
+        <S.ButtonRow>
           <Button onClick={onInputNum}>1</Button>
           <Button onClick={onInputNum}>2</Button>
           <Button onClick={onInputNum}>3</Button>
-          <br />
-
+        </S.ButtonRow>
+        <S.ButtonRow>
           <Button onClick={onInputNum}>4</Button>
           <Button onClick={onInputNum}>5</Button>
           <Button onClick={onInputNum}>6</Button>
-          <br />
-
+        </S.ButtonRow>
+        <S.ButtonRow>
           <Button onClick={onInputNum}>7</Button>
           <Button onClick={onInputNum}>8</Button>
           <Button onClick={onInputNum}>9</Button>
-          <br />
-
+        </S.ButtonRow>
+        <S.ButtonRow>
           <Button onClick={onInputElse} Cancel={true} disabled={inActive}>
             취소
           </Button>
@@ -84,12 +85,11 @@ function Money() {
           <Button onClick={onInputElse} Back={true} disabled={inActive}>
             ⬅︎
           </Button>
-          <br />
-          <Button onClick={() => listBtn()} Send={true} disabled={inActive}>
-            보내기
-          </Button>
-        </S.ButtonBlock>
-      </Template>
+        </S.ButtonRow>
+        <Button onClick={() => listBtn()} Send={true} disabled={inActive}>
+          보내기
+        </Button>
+      </S.ButtonBlock>
     </>
   );
 }

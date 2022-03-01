@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
 
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { depositAccount } from '../Redux/account';
 import { useNavigate } from 'react-router-dom';
+import colors from 'styles/colors';
+import Loading from 'common/Loading';
 
 function PersonList() {
   const [persons, setPersons] = useState(null);
@@ -24,9 +26,8 @@ function PersonList() {
           'https://inha-graduation-exhibition-api.herokuapp.com/transfer-accounts',
         );
         setPersons(res.data);
-        console.log(res.data);
       } catch (e) {
-        setError(e); //e가뭐야
+        setError(e);
       }
       setLoading(false);
     };
@@ -37,7 +38,7 @@ function PersonList() {
     };
   }, []);
 
-  if (loading) return <div>로딩중</div>;
+  if (loading) return <Loading />;
   if (error) return <div>에러 발생</div>;
   if (!persons) return null;
 
@@ -54,13 +55,13 @@ function PersonList() {
             key={person._id}
             onClick={() => selectBtn(persons[index])}>
             <Circle>
-              <img alt="bankName" src={person.bankImageUrl} />
+              <img alt="bankname" src={person.bankImageUrl} />
             </Circle>
             <AccountInfo>
-              <p className="c1">{person.accountHolder}</p>
-              <p className="c2">
+              <span className="name">{person.accountHolder}</span>
+              <span className="account">
                 {person.bankName} {person.accountNumber}
-              </p>
+              </span>
             </AccountInfo>
           </PersonButton>
         );
@@ -77,14 +78,18 @@ const ListBlock = styled.div`
 `;
 
 const PersonButton = styled.button`
+  cursor: pointer;
   height: 70px;
   display: flex;
   flex-direction: row;
   background: none;
   border: none;
   margin: 1px 0;
+  &:hover {
+    opacity: 0.8;
+  }
   &:active {
-    background: #f5fffa;
+    filter: grayscale(40%);
   }
 `;
 
@@ -106,19 +111,22 @@ const Circle = styled.div`
 `;
 
 const AccountInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 50px;
   background: none;
   text-align: left;
-  padding: 8px 16px;
-  line-height: 5%;
-  .c1 {
+  padding: 12px 16px;
+  line-height: 1;
+  .name {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
+    margin-bottom: 6px;
   }
 
-  .c2 {
+  .account {
     font-size: 14px;
-    color: #a9a9a9;
+    color: ${colors.gray200};
   }
 `;
 

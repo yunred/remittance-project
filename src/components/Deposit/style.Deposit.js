@@ -1,31 +1,38 @@
 import styled from 'styled-components';
+import colors from 'styles/colors';
 
 export const DepositBlock = styled.div`
-  height: 62vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .num {
+  .small {
     font-size: 16px;
-    color: gray;
+    color: ${colors.gray200};
   }
 `;
 
 export const RecipientBlock = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   background: none;
   justify-content: space-between;
   padding: 12px;
-
-  p {
+  margin-bottom: 180px;
+  span {
     font-size: 20px;
   }
 
-  span {
-    font-weight: bold;
+  .bold {
+    font-weight: 700;
+  }
+  .margin_top {
+    margin-top: 8px;
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -35,7 +42,6 @@ export const RecipientCircle = styled.div`
   border-radius: 30px;
   border: 1px solid #ced4da;
   display: flex;
-  align: left;
   align-items: center;
   justify-content: center;
   margin: auto 8px;
@@ -52,6 +58,10 @@ export const SenderBlock = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   padding: 12px;
+
+  .margin_bottom {
+    margin-bottom: 8px;
+  }
 `;
 
 export const PersonButton = styled.button`
@@ -60,8 +70,12 @@ export const PersonButton = styled.button`
   flex-direction: row;
   background: none;
   border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
   &:active {
-    background: #f5fffa;
+    filter: grayscale(40%);
   }
 `;
 export const Circle = styled.div`
@@ -100,18 +114,25 @@ export const Check = styled.div`
   }
 `;
 export const AccountInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 50px;
   background: none;
   text-align: left;
-  padding: 8px 16px;
-  line-height: 5%;
-  .c1 {
+  padding: 14px 16px;
+  line-height: 1;
+  .accountName {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
+    margin-bottom: 6px;
   }
 
-  .c2 {
+  .accountBalance {
     font-size: 14px;
-    color: #a9a9a9;
+    color: ${colors.gray200};
   }
+`;
+
+export const ButtonBlock = styled.div`
+  padding: 12px;
 `;
