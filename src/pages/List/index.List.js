@@ -3,7 +3,7 @@ import Back from 'common/Back';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { depositAccount } from 'redux/account';
+import { depositAccount } from 'reduxModule/account';
 import { useNavigate } from 'react-router-dom';
 import Loading from 'common/Loading';
 import * as S from 'pages/List/style.List';
