@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -55,14 +55,19 @@ function Back({ children, isMarked, ...rest }) {
 
   const money = useSelector((state) => state.amount.money);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (money === 0) {
+      navigate('/');
+    }
+  }, [money]);
+
   return (
     <>
       <BackBar>
         <BackButton
           onClick={() => {
             navigate(-1);
-          }}
-          {...rest}>
+          }}>
           &lsaquo;
         </BackButton>
         <SendMoney isMarked={isMarked}>
