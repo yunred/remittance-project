@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import colors from 'styles/colors';
 
-export const MainBlock = styled.div`
-  background-color: beige;
-`;
 export const MoneyBlock = styled.div`
   display: flex;
   flex-direction: column;

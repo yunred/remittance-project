@@ -124,10 +124,11 @@ function Deposit() {
             })}
           </S.SenderBlock>
         </S.DepositBlock>
-
-        <Button onClick={() => ResultBtn()} Send={true}>
-          보내기
-        </Button>
+        <S.ButtonBlock>
+          <Button onClick={() => ResultBtn()} Send={true}>
+            보내기
+          </Button>
+        </S.ButtonBlock>
       </Template>
     </>
   );

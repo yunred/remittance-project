@@ -38,7 +38,7 @@ function Back({ children, isMarked, ...rest }) {
 }
 const BackBar = styled.div`
   display: flex;
-  width: 375px;
+  width: 100%;
   height: 86px;
 
   position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
@@ -60,6 +60,7 @@ const BackBar = styled.div`
 `;
 
 const BackButton = styled.button`
+  cursor: pointer;
   display: inline-flex;
   outline: none;
   border: none;
@@ -73,7 +74,7 @@ const BackButton = styled.button`
 `;
 
 const SendMoney = styled.div`
-  width: 375px;
+  width: 100%;
   height: 86px;
   font-size: 24px;
   display: flex;

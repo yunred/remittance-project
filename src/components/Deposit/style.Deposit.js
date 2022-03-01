@@ -66,8 +66,12 @@ export const PersonButton = styled.button`
   flex-direction: row;
   background: none;
   border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
   &:active {
-    background: #f5fffa;
+    filter: grayscale(40%);
   }
 `;
 export const Circle = styled.div`
@@ -123,4 +127,8 @@ export const AccountInfo = styled.div`
     font-size: 14px;
     color: ${colors.gray200};
   }
+`;
+
+export const ButtonBlock = styled.div`
+  padding: 12px;
 `;

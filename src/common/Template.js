@@ -7,7 +7,7 @@ function Template({ children }) {
 }
 const TemplateBlock = styled.div`
   position: relative;
-  width: 375px;
+  max-width: 460px;
   background: #ffffff;
 
   margin: 0 auto;

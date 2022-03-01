@@ -29,9 +29,11 @@ const StyledButton = styled.button`
 
   /* 색상 */
   background: none;
-
+  &:hover {
+    opacity: 0.4;
+  }
   &:active {
-    background: #f5fffa;
+    filter: grayscale(40%);
   }
 
   /* 기타 */

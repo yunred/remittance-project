@@ -77,14 +77,18 @@ const ListBlock = styled.div`
 `;
 
 const PersonButton = styled.button`
+  cursor: pointer;
   height: 70px;
   display: flex;
   flex-direction: row;
   background: none;
   border: none;
   margin: 1px 0;
+  &:hover {
+    opacity: 0.8;
+  }
   &:active {
-    background: #f5fffa;
+    filter: grayscale(40%);
   }
 `;
 
