@@ -31,6 +31,7 @@ function Deposit() {
           'https://inha-graduation-exhibition-api.herokuapp.com/my-accounts',
         );
         setAccounts(res.data);
+        //console.log(res.data);
       } catch (e) {
         setError(e);
       }
@@ -62,23 +63,24 @@ function Deposit() {
         <Back />
         <S.DepositBlock>
           <S.RecipientBlock>
-            <p>
-              <span>{depositPerson.accountHolder}</span>님 계좌로 <br />
-              <span>
+            <span>
+              <span className="bold">{depositPerson.accountHolder}</span>님
+              계좌로 <br />
+              <span className="bold">
                 {money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
-              </span>{' '}
+              </span>
               을 보냅니다
-            </p>
+            </span>
             <S.RecipientCircle>
               <img src={depositPerson.bankImageUrl} />
             </S.RecipientCircle>
-            <p className="num">
+            <span className="small margin_top">
               {depositPerson.bankName} {depositPerson.accountNumber}
-            </p>
+            </span>
           </S.RecipientBlock>
 
           <S.SenderBlock>
-            <p className="num">출금 계좌</p>
+            <span className="small margin_bottom">출금 계좌</span>
             {accounts.map((account, index) => {
               return (
                 <S.PersonButton
@@ -88,8 +90,13 @@ function Deposit() {
                     <img src={account.bankImageUrl} />
                   </S.Circle>
                   <S.AccountInfo>
-                    <p className="c1">{account.accountName}</p>
-                    <p className="c2">{account.accountBalance}</p>
+                    <span className="accountName">{account.accountName}</span>
+                    <span className="accountBalance">
+                      {account.accountBalance
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                      원
+                    </span>
                   </S.AccountInfo>
                   <S.Check index={index} checked={checked}>
                     <img src={check} alt="check" />

@@ -7,10 +7,8 @@ import PersonList from 'common/PersonList';
 function List() {
   return (
     <>
-      <Template>
-        <Back isMarked />
-        <PersonList />
-      </Template>
+      <Back isMarked />
+      <PersonList />
     </>
   );
 }
