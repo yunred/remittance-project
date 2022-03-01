@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import Button from 'common/ButtonStyle';
 import { useDispatch } from 'react-redux';
-import { setMoney } from 'Redux/amount';
+import { setMoney } from 'redux/amount';
 import { useNavigate } from 'react-router-dom';
-import * as S from 'components/Money/style.Money';
+import * as S from 'pages/Money/style.Money';
 
 function Money() {
   const [value, setValue] = useState('0');
@@ -21,12 +21,15 @@ function Money() {
       } else {
         setInactive(false);
       }
+      return;
     } else if (value + e.target.textContent > 2000000) {
       //200만원 초과할때
       setValue('2000000');
       setunderLimit(false);
+      return;
     } else {
-      setValue((preValue) => preValue + e.target.textContent);
+      setValue(value.toString() + e.target.textContent.toString());
+      return;
     }
   };
 

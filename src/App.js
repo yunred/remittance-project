@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Money from 'components/Money/index.Money.js';
-import List from 'components/List/index.List.js';
+import Money from 'pages/Money/index.Money.js';
+import List from 'pages/List/index.List.js';
 import GlobalStyle from 'styles/Globalstyle.js';
-import Deposit from 'components/Deposit/index.Deposit.js';
+import Deposit from 'pages/Deposit/index.Deposit.js';
 import Template from 'common/Template';
 
 function App() {

@@ -23,6 +23,12 @@ export const MoneyBlock = styled.div`
 `;
 
 export const AmountSpan = styled.span`
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   @keyframes Down {
     0% {
       opacity: 0;

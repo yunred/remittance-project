@@ -7,7 +7,7 @@ import Button from 'common/ButtonStyle';
 import check from 'check.png';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { withdrawalAccount } from 'Redux/account';
+import { withdrawalAccount } from 'redux/account';
 import Loading from 'common/Loading';
 import * as S from './style.Deposit';
 
@@ -59,9 +59,9 @@ function Deposit() {
   if (error) return <div>에러 발생</div>;
   if (!accounts) return null;
 
-  const ResultBtn = () => {
+  const ResultBtn = (e) => {
+    e.stopPropagation();
     dispatch(withdrawalAccount(accounts[checked]));
-
     if (Number(money) > Number(accounts[checked].accountBalance)) {
       alert('계좌의 잔액이 부족합니다. 확인 후 다시 이용해주세요.');
       return;
@@ -127,7 +127,7 @@ function Deposit() {
           </S.SenderBlock>
         </S.DepositBlock>
         <S.ButtonBlock>
-          <Button onClick={() => ResultBtn()} Send={true}>
+          <Button onClick={(e) => ResultBtn(e)} Send={true}>
             보내기
           </Button>
         </S.ButtonBlock>
