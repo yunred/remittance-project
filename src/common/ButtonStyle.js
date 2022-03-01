@@ -29,9 +29,7 @@ const StyledButton = styled.button`
 
   /* 색상 */
   background: none;
-  &:hover {
-    color: ${(props) => (props.disabled ? 'none' : 'gray')};
-  }
+
   &:active {
     background: #f5fffa;
   }
