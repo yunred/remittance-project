@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { depositAccount } from '../Redux/account';
 import { useNavigate } from 'react-router-dom';
+import colors from 'styles/colors';
 
 function PersonList() {
   const [persons, setPersons] = useState(null);
@@ -53,13 +54,13 @@ function PersonList() {
             key={person._id}
             onClick={() => selectBtn(persons[index])}>
             <Circle>
-              <img alt="bankName" src={person.bankImageUrl} />
+              <img alt="bankname" src={person.bankImageUrl} />
             </Circle>
             <AccountInfo>
-              <p className="c1">{person.accountHolder}</p>
-              <p className="c2">
+              <span className="name">{person.accountHolder}</span>
+              <span className="account">
                 {person.bankName} {person.accountNumber}
-              </p>
+              </span>
             </AccountInfo>
           </PersonButton>
         );
@@ -105,19 +106,22 @@ const Circle = styled.div`
 `;
 
 const AccountInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 50px;
   background: none;
   text-align: left;
-  padding: 8px 16px;
-  line-height: 5%;
-  .c1 {
+  padding: 12px 16px;
+  line-height: 1;
+  .name {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
+    margin-bottom: 6px;
   }
 
-  .c2 {
+  .account {
     font-size: 14px;
-    color: #a9a9a9;
+    color: ${colors.gray200};
   }
 `;
 
