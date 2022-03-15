@@ -15,7 +15,6 @@ function List() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    let abortController = new AbortController(); //http fetch를 취소하는 AbortController를 사용해서 에러 해결
     const fetchPersons = async () => {
       try {
         setError(null);
@@ -32,9 +31,6 @@ function List() {
     };
 
     fetchPersons();
-    return () => {
-      abortController.abort();
-    };
   }, []);
 
   if (loading) return <Loading />;
